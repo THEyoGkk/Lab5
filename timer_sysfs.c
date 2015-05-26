@@ -46,6 +46,30 @@ void timer_sysfs_callback(unsigned long data)
 	mod_timer(&hello_timer, jiffies + msecs_to_jiffies(period));
 }
 
+static int __init timer_sysfs_init(void)
+{
+	int retval;
+
+	timer_kobj = kobject_create_and_add("timer_dir", NULL);
+
+	retval = sysfs_create_group(timer_kobj, &timer_attr_group);
+	if (retval)
+		kobject_put(timer_kobj);
+
+	setup_timer(&hello_timer, timer_sysfs_callback, 0);
+
+	return retval;
+}
+
+static void __exit timer_sysfs_exit(void)
+{
+	del_timer(&hello_timer);
+	kobject_put(timer_kobj);
+}
+
+module_init(timer_sysfs_init);
+module_exit(timer_sysfs_exit);
+MODULE_LICENSE("GPL");
 
 
 
