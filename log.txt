@@ -1,0 +1,10 @@
+make -C /lib/modules/3.13.0-32-generic/build M=/home/lehasever/University/Lab5 modules
+make[1]: Entering directory `/usr/src/linux-headers-3.13.0-32-generic'
+  Building modules, stage 2.
+  MODPOST 1 modules
+make[1]: Leaving directory `/usr/src/linux-headers-3.13.0-32-generic'
+make -C /lib/modules/3.13.0-32-generic/build M=/home/lehasever/University/Lab5 clean
+make[1]: Entering directory `/usr/src/linux-headers-3.13.0-32-generic'
+  CLEAN   /home/lehasever/University/Lab5/.tmp_versions
+  CLEAN   /home/lehasever/University/Lab5/Module.symvers
+make[1]: Leaving directory `/usr/src/linux-headers-3.13.0-32-generic'
